@@ -93,6 +93,35 @@ if test "$ok" = "yes"; then
 fi
 AM_CONDITIONAL(LDOUBLE, test "$ok" = "yes")
 
+AC_ARG_ENABLE(ffmpeg, [AC_HELP_STRING([--enable-ffmpeg],[enable fast ffmpeg transforms])], have_ffmpeg=$enableval, have_ffmpeg=no)
+AC_CHECK_HEADER(libavcodec/avfft.h,have_libavcodec_avfft_h=yes,have_libavcodec_avfft_h=no)
+AC_CHECK_LIB(avcodec,av_fft_init,have_libavcodec_av_fft_init=yes,have_libavcodec_av_fft_init=no)
+FFMPEG_LDFLAGS=""
+if test "$have_ffmpeg"x = "yes"x; then
+	if test "$PRECISION"x != "s"x; then
+		AC_MSG_ERROR([--enable-ffmpeg requires --enable-single])
+	else
+		if test "$have_libavcodec_avfft_h"x = "no"x; then
+			AC_MSG_ERROR([--enable-ffmpeg requires libavcodec/avfft.h])
+		fi
+		if test "$have_libavcodec_av_fft_init"x = "no"x; then
+			AC_MSG_ERROR([--enable-ffmpeg requires av_fft_init in libavcodec])
+		fi
+		AC_DEFINE(HAVE_FFMPEG,1,[Define to enable fast ffmpeg transforms.])
+		FFMPEG_LDFLAGS="${FFMPEG_LDFLAGS} -lavcodec"
+	fi
+fi
+AC_SUBST(FFMPEG_LDFLAGS)
+
+AC_ARG_ENABLE(ffmpeg-test, [AC_HELP_STRING([--enable-ffmpeg-test],[use only ffmpeg algorithms])], have_ffmpeg_test=$enableval)
+if test "$have_ffmpeg_test"x = "yes"x; then
+	if test "$have_ffmpeg"x = "no"x; then
+		AC_MSG_ERROR([--enable-ffmpeg-test requires --enable-ffmpeg])
+	else
+		AC_DEFINE(HAVE_FFMPEG_TEST,1,[Define to disable all built-in algorithms and only use those provided by ffmpeg])
+	fi
+fi
+
 AC_ARG_ENABLE(quad-precision, [AC_HELP_STRING([--enable-quad-precision],[compile fftw in quadruple precision if available])], ok=$enableval, ok=no)
 if test "$ok" = "yes"; then
 	if test "$PRECISION" != "d"; then

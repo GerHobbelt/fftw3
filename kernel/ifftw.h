@@ -103,6 +103,7 @@ extern void X(extract_reim)(int sign, R *c, R **r, R **i);
       defined(HAVE_KCVI) || \
       defined(HAVE_ALTIVEC) || defined(HAVE_VSX) || \
       defined(HAVE_MIPS_PS) || \
+      defined(HAVE_NEON) || \
       defined(HAVE_GENERIC_SIMD128) || defined(HAVE_GENERIC_SIMD256)
 #define HAVE_SIMD 1
 #else
@@ -129,7 +130,7 @@ typedef struct scanner_s scanner;
 
 /*-----------------------------------------------------------------------*/
 /* alloca: */
-#if HAVE_SIMD
+#if HAVE_SIMD || HAVE_FFMPEG
 #  if defined(HAVE_KCVI) || defined(HAVE_AVX512)
 #    define MIN_ALIGNMENT 64
 #  elif defined(HAVE_AVX) || defined(HAVE_AVX2) || defined(HAVE_GENERIC_SIMD256)
