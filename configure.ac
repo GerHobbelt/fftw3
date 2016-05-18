@@ -839,8 +839,6 @@ AC_CONFIG_FILES([
 
    libbench2/Makefile
    tests/Makefile
-   doc/Makefile
-   doc/FAQ/Makefile
 
    tools/Makefile
    tools/fftw_wisdom.1
