@@ -3,12 +3,6 @@
 
 NJOBS=4
 
-tag=`git tag --contains HEAD`
-if [ -z "$tag" ]; then
-    echo "Current git HEAD is not tagged---refusing to build distribution"
-    exit 1
-fi
-
 # hackery to build ChangeLog
 git log --pretty=medium --date-order > ChangeLog
 
