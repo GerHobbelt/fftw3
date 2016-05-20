@@ -126,7 +126,7 @@ if QUAD
 libfftw3@PREC_SUFFIX@_la_LDFLAGS = -version-info @SHARED_VERSION_INFO@
 else
 libfftw3@PREC_SUFFIX@_la_LDFLAGS = -no-undefined -version-info	\
-@SHARED_VERSION_INFO@ @FFMPEG_LDFLAGS@
+@SHARED_VERSION_INFO@
 endif
 
 fftw3@PREC_SUFFIX@.pc: fftw.pc

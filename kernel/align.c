@@ -21,15 +21,21 @@
 
 #include "ifftw.h"
 
+#if HAVE_SIMD
+#  define ALGN 16
+#else
+   /* disable the alignment machinery, because it will break,
+      e.g., if sizeof(R) == 12 (as in long-double/x86) */
+#  define ALGN 0
+#endif
+
 /* NONPORTABLE */
 int X(ialignment_of)(R *p)
 {
-#ifndef MIN_ALIGNMENT
-   /* disable the alignment machinery, because it will break,
-       e.g., if sizeof(R) == 12 (as in long-double/x86) */
+#if ALGN == 0
      UNUSED(p);
      return 0;
 #else
-     return (int)(((uintptr_t) p) % MIN_ALIGNMENT );
+     return (int)(((uintptr_t) p) % ALGN);
 #endif
 }

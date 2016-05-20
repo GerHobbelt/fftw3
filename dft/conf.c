@@ -23,7 +23,6 @@
 
 static const solvtab s =
 {
-#ifndef HAVE_FFMPEG_TEST
      SOLVTAB(X(dft_indirect_register)),
      SOLVTAB(X(dft_indirect_transpose_register)),
      SOLVTAB(X(dft_rank_geq2_register)),
@@ -35,17 +34,12 @@ static const solvtab s =
      SOLVTAB(X(dft_nop_register)),
      SOLVTAB(X(ct_generic_register)),
      SOLVTAB(X(ct_genericbuf_register)),
-#endif
-#ifdef HAVE_FFMPEG
-     SOLVTAB(X(dft_ffmpeg_register)),
-#endif
      SOLVTAB_END
 };
 
 void X(dft_conf_standard)(planner *p)
 {
      X(solvtab_exec)(s, p);
-#ifndef HAVE_FFMPEG_TEST
      X(solvtab_exec)(X(solvtab_dft_standard), p);
 #if HAVE_SSE2
      if (X(have_simd_sse2)())
@@ -90,6 +84,5 @@ void X(dft_conf_standard)(planner *p)
 #endif
 #if HAVE_GENERIC_SIMD256
      X(solvtab_exec)(X(solvtab_dft_generic_simd256), p);
-#endif
 #endif
 }

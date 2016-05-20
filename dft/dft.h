@@ -78,10 +78,6 @@ void X(dft_nop_register)(planner *p);
 void X(ct_generic_register)(planner *p);
 void X(ct_genericbuf_register)(planner *p);
 
-#ifdef HAVE_FFMPEG
-void X(dft_ffmpeg_register)(planner *p);
-#endif
-
 /* configurations */
 void X(dft_conf_standard)(planner *p);
 
