@@ -1,3 +1,7 @@
+
+The purpose of thie fork is to make FFTW can work with cmake without doing configuring ocaml.
+
+===========================
 *DO NOT CHECK OUT THESE FILES FROM GITHUB UNLESS YOU KNOW WHAT YOU ARE
 DOING.*  (See below.)
 
