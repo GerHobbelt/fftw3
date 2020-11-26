@@ -456,6 +456,7 @@ static inline V BYTWJ2(const R *t, V sr)
 #endif /* FFTW_SINGLE */
 #define TWVLS (2 * VL)
 
+#define VENTER() /* nothing */
 #define VLEAVE() /* nothing */
 
 #include "simd-common.h"
