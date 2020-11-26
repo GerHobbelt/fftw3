@@ -201,6 +201,21 @@ if test "$have_neon" = "yes"; then
 fi
 AM_CONDITIONAL(HAVE_NEON, test "$have_neon" = "yes")
 
+AC_ARG_ENABLE(sve, [AC_HELP_STRING([--enable-sve],[enable ARM SVE optimizations])], have_sve=$enableval, have_sve=no)
+if test "$have_sve" = "yes"; then
+	AC_DEFINE(HAVE_SVE,1,[Define to enable ARM SVE optimizations.])
+        case "${host_cpu}" in
+                aarch64)
+                ;;
+                *)
+		if test "$PRECISION" != "d" -a "$PRECISION" != "s"; then
+			AC_MSG_ERROR([SVE requires single or double precision])
+		fi
+                ;;
+        esac
+fi
+AM_CONDITIONAL(HAVE_SVE, test "$have_sve" = "yes")
+
 AC_ARG_ENABLE(armv8-pmccntr-el0, [AC_HELP_STRING([--enable-armv8-pmccntr-el0],[enable the cycle counter on ARMv8 via the PMCCNTR_EL0 register (see README-perfcounters for details and mandatory instructions)])], have_armv8pmccntrel0=$enableval)
 if test "$have_armv8pmccntrel0"x = "yes"x; then
 	AC_DEFINE(HAVE_ARMV8_PMCCNTR_EL0,1,[Define if you have enabled the PMCCNTR_EL0 cycle counter on ARMv8])
@@ -476,6 +491,7 @@ AC_SUBST(KCVI_CFLAGS)
 AC_SUBST(ALTIVEC_CFLAGS)
 AC_SUBST(VSX_CFLAGS)
 AC_SUBST(NEON_CFLAGS)
+AC_SUBST(SVE_CFLAGS)
 
 dnl add stack alignment CFLAGS if so requested
 if test "$with_incoming_stack_boundary"x != "no"x; then
@@ -771,6 +787,7 @@ AC_CONFIG_FILES([
    dft/simd/altivec/Makefile
    dft/simd/vsx/Makefile
    dft/simd/neon/Makefile
+   dft/simd/sve/Makefile
    dft/simd/generic-simd128/Makefile
    dft/simd/generic-simd256/Makefile
 
@@ -791,6 +808,7 @@ AC_CONFIG_FILES([
    rdft/simd/altivec/Makefile
    rdft/simd/vsx/Makefile
    rdft/simd/neon/Makefile
+   rdft/simd/sve/Makefile
    rdft/simd/generic-simd128/Makefile
    rdft/simd/generic-simd256/Makefile
 
