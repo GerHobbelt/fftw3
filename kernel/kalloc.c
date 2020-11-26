@@ -131,6 +131,10 @@ void *X(kernel_malloc)(size_t n)
 #    error "Don't know how to malloc() aligned memory ... try configuring --with-our-malloc"
 #  endif
 
+#  elif defined(__FUJITSU)
+     /* Fujitsu C compiler for ARM-SVE */
+     p = (void *) malloc(n);
+
 #else /* !defined(MIN_ALIGNMENT) */
      p = malloc(n);
 #endif
