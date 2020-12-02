@@ -6,7 +6,7 @@
  * with single & double precision by Erik Lindahl.
  * Romain Dolbeau hereby places his modifications in the public domain.
  * Erik Lindahl hereby places his modifications in the public domain.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
