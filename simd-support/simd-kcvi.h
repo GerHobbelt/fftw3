@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2003, 2007-11 Matteo Frigo
  * Copyright (c) 2003, 2007-11 Massachusetts Institute of Technology
- * 
+ *
  * Knights Corner Vector Instruction support added by Romain Dolbeau.
  * Romain Dolbeau hereby places his modifications in the public domain.
  *
