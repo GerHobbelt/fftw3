@@ -22,7 +22,7 @@ See the [FFTW](http://www.fftw.org/) home page for more information.
 * Clone this repository.
 
 ```
-$ git clone https://github.com/fujitsu/fftw.git
+$ git clone https://github.com/fujitsu/fftw3.git
 ```
 
 ## Generate configure scripts
@@ -139,10 +139,9 @@ $ make install
 
 # Usage
 
-## How to link
-* Use a compiler command with -L$(INSTALL_PATH)/lib64 option and one of the options
-  listed in the following table in order to link with an FFTW library.
-* Write an option after your sources or objects.
+## How to compile
+* Compile with the -L$(INSTALL_PATH)/lib64 option and one of the options
+  listed in the following table after your sources or objects.
 
 | FFTW3 libraries                   　　　　　  | Options          |
 | --------------------------------------------- | ---------------- |
@@ -153,16 +152,12 @@ $ make install
 
 ## Example
 
-* Static linking with the single precision and sequential library.
+* Case with the single precision and sequential library.
 
 ```
 $ frt a.f -L$(INSTALL_PATH)/lib64 -lfftw3f -lm
 ```
 
 # License
-* See [LICENSE](https://github.com/fujitsu/fftw/blob/fj_master/COPYING) file.
-
-
-# Copyright
-Copyright 2020 FUJITSU LIMITED
+* See [LICENSE](https://github.com/fujitsu/fftw3/fj_master/COPYING) file.
 
