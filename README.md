@@ -40,20 +40,20 @@ $ autoreconf --verbose --install --symlink --force
 * Native compilation using Fujitsu compiler (AArch64 target).
 
 ```
-$ ./configure                     \
-    CC="fcc"                      \
-    F77="frt"                     \
-    CFLAGS='-Ofast -Nclang'       \
-    FFLAGS='-Kfast'               \
-    --enable-sve                  \
-    --enable-armv8-cntvct-el0     \
-    --enable-float                \
-    --enable-fma                  \
-    --enable-fortran              \
-    --enable-openmp               \
-    --prefix="$INSTALL_PATH"      \
-    --libdir="$INSTALL_PATH/lib64"\
-    ac_cv_prog_f77_v='-###'       \
+$ ./configure                        \
+    CC="fcc"                         \
+    F77="frt"                        \
+    CFLAGS='-Ofast -Nclang'          \
+    FFLAGS='-Kfast'                  \
+    --enable-sve                     \
+    --enable-armv8-cntvct-el0        \
+    --enable-float                   \
+    --enable-fma                     \
+    --enable-fortran                 \
+    --enable-openmp                  \
+    --prefix="$INSTALL_PATH"         \
+    --libdir="$INSTALL_PATH/lib64"   \
+    ac_cv_prog_f77_v='-###'          \
     OPENMP_CFLAGS='-Kopenmp'
 $ make -j30
 ```
@@ -85,19 +85,19 @@ $ make -j30
 * Native compilation using Fujitsu compiler (AArch64 target).
 
 ```
-$ ./configure                     \
-    CC="fcc"                      \
-    F77="frt"                     \
-    CFLAGS='-Ofast -Nclang'       \
-    FFLAGS='-Kfast'               \
-    --enable-sve                  \
-    --enable-armv8-cntvct-el0     \
-    --enable-fma                  \
-    --enable-fortran              \
-    --enable-openmp               \
-    --prefix="$INSTALL_PATH"      \
-    --libdir="$INSTALL_PATH/lib64"\
-    ac_cv_prog_f77_v='-###'       \
+$ ./configure                        \
+    CC="fcc"                         \
+    F77="frt"                        \
+    CFLAGS='-Ofast -Nclang'          \
+    FFLAGS='-Kfast'                  \
+    --enable-sve                     \
+    --enable-armv8-cntvct-el0        \
+    --enable-fma                     \
+    --enable-fortran                 \
+    --enable-openmp                  \
+    --prefix="$INSTALL_PATH"         \
+    --libdir="$INSTALL_PATH/lib64"   \
+    ac_cv_prog_f77_v='-###'          \
     OPENMP_CFLAGS='-Kopenmp'
 $ make -j30
 ```
@@ -146,9 +146,9 @@ $ make install
 | FFTW3 libraries                   　　　　　  | Options                   |
 | --------------------------------------------- | ------------------------ |
 | Single precision and sequential version       | -lfftw3f -lm             |
-| Single precision and thread-parallel version  | -lfftw3 -lfftw3f_omp -lm |
+| Single precision and thread-parallel version  | -lfftw3f_omp -lfftw3f -lm |
 | Double precision and sequential version　　   | -lfftw3 -lm              |
-| Double precision and thread-parallel version  | -lfftw3 -lfftw3_omp -lm  |
+| Double precision and thread-parallel version  | -lfftw3_omp -lfftw3 -lm  |
 
 ## Example
 
