@@ -159,5 +159,5 @@ $ frt a.f -L$(INSTALL_PATH)/lib64 -lfftw3f -lm
 ```
 
 # License
-* See [LICENSE](https://github.com/fujitsu/fftw3/fj_master/COPYING) file.
+* See [LICENSE](https://github.com/fujitsu/fftw3/blob/fj_master/COPYING) file.
 
