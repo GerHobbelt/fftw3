@@ -43,7 +43,7 @@ $ autoreconf --verbose --install --symlink --force
 $ ./configure                        \
     CC="fcc"                         \
     F77="frt"                        \
-    CFLAGS='-Ofast -Nclang'          \
+    CFLAGS='-Nclang -Ofast'          \
     FFLAGS='-Kfast'                  \
     --enable-sve                     \
     --enable-armv8-cntvct-el0        \
@@ -51,6 +51,7 @@ $ ./configure                        \
     --enable-fma                     \
     --enable-fortran                 \
     --enable-openmp                  \
+    --enable-shared                  \
     --prefix="$INSTALL_PATH"         \
     --libdir="$INSTALL_PATH/lib64"   \
     ac_cv_prog_f77_v='-###'          \
@@ -64,7 +65,7 @@ $ make -j30
 $ ./configure                        \
     CC="fccpx"                       \
     F77="frtpx"                      \
-    CFLAGS='-Ofast -Nclang'          \
+    CFLAGS='-Nclang -Ofast'          \
     FFLAGS='-Kfast'                  \
     --host=aarch64-unknown-linux-gnu \
     --build=x86_64-cross-linux-gnu   \
@@ -74,6 +75,7 @@ $ ./configure                        \
     --enable-fma                     \
     --enable-fortran                 \
     --enable-openmp                  \
+    --enable-shared                  \
     --prefix="$INSTALL_PATH"         \
     --libdir="$INSTALL_PATH/lib64"   \
     ac_cv_prog_f77_v='-###'          \
@@ -88,13 +90,14 @@ $ make -j30
 $ ./configure                        \
     CC="fcc"                         \
     F77="frt"                        \
-    CFLAGS='-Ofast -Nclang'          \
+    CFLAGS='-Nclang -Ofast'          \
     FFLAGS='-Kfast'                  \
     --enable-sve                     \
     --enable-armv8-cntvct-el0        \
     --enable-fma                     \
     --enable-fortran                 \
     --enable-openmp                  \
+    --enable-shared                  \
     --prefix="$INSTALL_PATH"         \
     --libdir="$INSTALL_PATH/lib64"   \
     ac_cv_prog_f77_v='-###'          \
@@ -108,7 +111,7 @@ $ make -j30
 $ ./configure                        \
     CC="fccpx"                       \
     F77="frtpx"                      \
-    CFLAGS='-Ofast -Nclang'          \
+    CFLAGS='-Nclang -Ofast'          \
     FFLAGS='-Kfast'                  \
     --host=aarch64-unknown-linux-gnu \
     --build=x86_64-cross-linux-gnu   \
@@ -117,6 +120,7 @@ $ ./configure                        \
     --enable-fma                     \
     --enable-fortran                 \
     --enable-openmp                  \
+    --enable-shared                  \
     --prefix="$INSTALL_PATH"         \
     --libdir="$INSTALL_PATH/lib64"   \
     ac_cv_prog_f77_v='-###'          \
@@ -144,11 +148,11 @@ $ make install
   listed in the following table after your sources or objects.
 
 | FFTW3 libraries                   　　　　　  | Options                   |
-| --------------------------------------------- | ------------------------ |
-| Single precision and sequential version       | -lfftw3f -lm             |
+| --------------------------------------------- | ------------------------- |
+| Single precision and sequential version       | -lfftw3f -lm              |
 | Single precision and thread-parallel version  | -lfftw3f_omp -lfftw3f -lm |
-| Double precision and sequential version　　   | -lfftw3 -lm              |
-| Double precision and thread-parallel version  | -lfftw3_omp -lfftw3 -lm  |
+| Double precision and sequential version　　   | -lfftw3 -lm               |
+| Double precision and thread-parallel version  | -lfftw3_omp -lfftw3 -lm   |
 
 ## Example
 
