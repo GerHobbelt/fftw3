@@ -41,6 +41,7 @@ type c_decl =
   | Tdecl of string                (* arbitrary text declaration *)
 
 and c_ast =
+  | Simd_enterfun
   | Asch of Annotate.annotated_schedule
   | Simd_leavefun
   | Return of c_ast
