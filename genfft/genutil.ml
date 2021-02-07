@@ -316,7 +316,7 @@ let finalize_fcn ast =
     else
       C.extract_constants
 	
-  in mergedecls (C.Block (extract_constants ast, [ast; C.Simd_leavefun]))
+  in mergedecls (C.Block (extract_constants ast, [C.Simd_enterfun; ast; C.Simd_leavefun]))
 
 let twinstr_to_string vl x =
   if !Simdmagic.simd_mode then 

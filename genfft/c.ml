@@ -45,6 +45,7 @@ type c_decl =
   | Tdecl of string                (* arbitrary text declaration *)
 
 and c_ast =
+  | Simd_enterfun
   | Asch of annotated_schedule
   | Simd_leavefun
   | Return of c_ast
@@ -204,6 +205,7 @@ and unparse_ast =
 
   in
   function
+    | Simd_enterfun -> "" (* used only in SIMD code *)
     | Asch a -> (unparse_annotated true a)
     | Simd_leavefun -> "" (* used only in SIMD code *)
     | Return x -> "return " ^ unparse_ast x ^ ";"

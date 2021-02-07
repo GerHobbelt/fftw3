@@ -173,6 +173,7 @@ and unparse_ast ast =
 	    "}\n"
 
   in match ast with 
+  | Simd_enterfun -> "VENTER();\n"
   | Asch a -> (unparse_annotated true a)
   | Return x -> "return " ^ unparse_ast x ^ ";"
   | Simd_leavefun -> "VLEAVE();"
