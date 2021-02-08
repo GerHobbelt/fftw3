@@ -25,7 +25,7 @@ define(FFTW_MAJOR_VERSION, 3.3)dnl
 define(FFTW_MINOR_VERSION, 9)dnl
 
 dnl Version number of the FFTW source package.
-AC_INIT(fftw, FFTW_MAJOR_VERSION.FFTW_MINOR_VERSION, fftw@fftw.org)
+AC_INIT(fj-fftw, FFTW_MAJOR_VERSION.FFTW_MINOR_VERSION, fftw@fftw.org)
 AC_CONFIG_SRCDIR(kernel/ifftw.h)
 
 dnl Version number for libtool shared libraries.  Libtool wants a string
