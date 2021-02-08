@@ -648,7 +648,7 @@ fi
 
 dnl check for a proper indent in maintainer mode
 if test "$USE_MAINTAINER_MODE" = yes; then
-        AC_PATH_PROG(INDENT, indent, indent)
+        AC_PATH_PROGS(INDENT, gindent indent)
         # if INDENT is set to 'indent' then we didn't find indent
         if test "$INDENT" != indent ; then
                 AC_MSG_CHECKING(if $INDENT is GNU indent)
